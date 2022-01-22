@@ -1,0 +1,19 @@
+import React, { Component } from "react";
+
+export default class CreateExpense extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      username: "",
+      categ
+    };
+  }
+  render() {
+    return (
+      <div>
+        <p>You are on the Create Expense component!</p>
+      </div>
+    );
+  }
+}

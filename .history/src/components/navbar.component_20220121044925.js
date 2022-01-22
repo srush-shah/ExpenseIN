@@ -1,0 +1,29 @@
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
+import { Navbar, Container, Nav } from "react-bootstrap";
+import ExpensesList from "./expenses-list.component";
+import CreateExpense from "./create-expense.component";
+import CreateUser from "./create-user.component";
+
+export default class Header extends Component {
+  render() {
+    return (
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Container>
+          <Link to="/">
+            <Navbar.Brand>ExpenseIN</Navbar.Brand>
+          </Link>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+              <Link to="/" innerRef={ExpensesList}>Expenses</Link>
+              <Link toinnerRef={CreateExpense}>Create Expense Log</Link>
+              <Link innerRef={CreateUser}>Create User</Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    );
+  }
+}
