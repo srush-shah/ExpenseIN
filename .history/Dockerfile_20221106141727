@@ -6,7 +6,6 @@ RUN npm install --production --silent && mv node_modules ../
 COPY . .
 EXPOSE 3000
 RUN chown -R node:node /usr/src/app
-USER node
 COPY --chown=node:node . .
-RUN ["chmod", "755", "docker-entrypoint.sh"]
+USER node
 CMD ["npm", "start"]

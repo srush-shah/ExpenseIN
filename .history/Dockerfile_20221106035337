@@ -5,8 +5,7 @@ COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
 RUN npm install --production --silent && mv node_modules ../
 COPY . .
 EXPOSE 3000
-RUN chown -R node:node /usr/src/app
+RUN chown -R node /usr/src/app
+RUN chmod +x /usr/src/app/node_modules/.bin/nodemon
 USER node
-COPY --chown=node:node . .
-RUN ["chmod", "755", "docker-entrypoint.sh"]
 CMD ["npm", "start"]

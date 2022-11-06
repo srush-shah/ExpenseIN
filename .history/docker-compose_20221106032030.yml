@@ -1,0 +1,21 @@
+version: "1"
+
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: expensein
+    container_name: expensein:latest
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - ATLAS_URI=$ATLAS_URI
+    ports:
+      - "5000"
+    volumes:
+      - .:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
+    networks:
+      - app-network
+    command: ./wait-for.sh db:27017 -- /home/node/app/node_modules/.bin/nodemon app.js

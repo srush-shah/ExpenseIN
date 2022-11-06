@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: expensein
+    container_name: expensein
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - ATLAS_URI=$ATLAS_URI
+    ports:
+      - "80:5000"
+    volumes:
+      - .:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
+    networks:
+      - app-network
+    command: /usr/src/app/node_modules/nodemon server.js
+  db:
+    image: mongo:4.1.8-xenial
+    container_name: db
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - MONGO_INITDB_ROOT_URI=$ATLAS_URI
+    volumes:
+      - dbdata:/data/db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  dbdata:
+  node_modules:
