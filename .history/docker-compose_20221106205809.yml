@@ -5,9 +5,9 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    image: expensein-backe
+    image: expensein-server
     container_name: expensein-node-server
-    command: -- /usr/src/app/ nodemon server.js
+    command: /usr/src/app/backend/ nodemon server.js
     volumes:
       - ./backend/:/usr/src/app
       - /usr/src/app/node_modules
@@ -18,8 +18,6 @@ services:
     env_file: .env
     environment:
       - NODE_ENV=development
-      - MONGO_USERNAME=$MONGO_USERNAME
-      - MONGO_PASSWORD=$MONGO_PASSWORD
     networks:
       - app-network
   mongo:

@@ -18,8 +18,7 @@ services:
     env_file: .env
     environment:
       - NODE_ENV=development
-      - MONGO_USERNAME=$MONGO_USERNAME
-      - MONGO_PASSWORD=$MONGO_PASSWORD
+      - MONGO_USERNAME=
     networks:
       - app-network
   mongo:

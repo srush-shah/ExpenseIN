@@ -1,25 +1,23 @@
-version: "3.7"
+version: '3.7'
 
 services:
   server:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    image: expensein-backe
+    image: expensein-server
     container_name: expensein-node-server
-    command: -- /usr/src/app/ nodemon server.js
+    command: /usr/src/app/node_modules/.bin/nodemon server.js
     volumes:
-      - ./backend/:/usr/src/app
+      - ./server/:/usr/src/app
       - /usr/src/app/node_modules
     ports:
       - "5000:5000"
     depends_on:
       - mongo
-    env_file: .env
+    env_file: ./server/.env
     environment:
       - NODE_ENV=development
-      - MONGO_USERNAME=$MONGO_USERNAME
-      - MONGO_PASSWORD=$MONGO_PASSWORD
     networks:
       - app-network
   mongo:
@@ -32,13 +30,13 @@ services:
       - app-network
   client:
     build:
-      context: ./
+      context: ./client
       dockerfile: Dockerfile
-    image: expensein-client
-    container_name: expensein-react-client
+    image: myapp-client
+    container_name: myapp-react-client
     command: npm start
     volumes:
-      - ./:/usr/app
+      - ./client/:/usr/app
       - /usr/app/node_modules
     depends_on:
       - server
@@ -48,11 +46,11 @@ services:
       - app-network
 
 networks:
-  app-network:
-    driver: bridge
+    app-network:
+        driver: bridge
 
 volumes:
-  data-volume:
-  node_modules:
-  web-root:
-    driver: local
+    data-volume:
+    node_modules:
+    web-root:
+      driver: local
