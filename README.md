@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# ExpenseIN - The Expense Tracker App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a web app for keeping track of your expenses. It is created using the MERN stack.
 
-## Available Scripts
+## The app has not been deployed yet but can be run locally using the following steps:
 
-In the project directory, you can run:
+#### Step 1: Clone the repository to your machine
 
-### `npm start`
+`git clone https://github.com/srush-shah/ExpenseIN.git`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### Step 2: Install node modules
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+cd ExpenseIN
 
-### `npm test`
+npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Step 3: Install Docker on your system
 
-### `npm run build`
+Go to the official website of Docker: [Docker Website](https://www.docker.com/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Step 4: Start Docker
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Step 5: Run Docker Compose
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+In the terminal, in the main directory of the repository, run:
 
-### `npm run eject`
+```
+docker-compose up -d
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+docker-compose logs
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The logs should show three images running: expensein-server, expensein-client, mongo. The mongo image should display the following:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+Server is running on port: 5000
+MongoDB database connection established successfully
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+NOTE: Connection would be established on a private network or mobile hotspot and not on public wifi.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### Step 6: Open localhost:3000 in a browser and you can access the app
